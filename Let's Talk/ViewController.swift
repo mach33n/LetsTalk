@@ -22,7 +22,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UIApplicationDelega
     @IBOutlet weak var googleButton: GIDSignInButton!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var logInButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,9 +68,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UIApplicationDelega
     }
     
     func loadDatabase(){
-        SearchUserTableViewController.users = [:]
-        FriendsListViewController.Friends = [:]
-        SearchUserTableViewController.notAddedFriends = []
+        
         ref.child("users").observe(.value, with: { (snapshot) in
             for child in snapshot.value as! [String:String]{
                 SearchUserTableViewController.users.updateValue(child.value as! String, forKey: child.key as! String)
@@ -80,30 +77,34 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UIApplicationDelega
         
         FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").observe(.value, with: { (snapshot) in
             if snapshot.hasChildren() == true{
-            for child in snapshot.value as! [String:String]{
-                FriendsListViewController.Friends.updateValue(child.value as! String, forKey: child.key as! String)
-            }
+                for child in snapshot.value as! [String:String]{
+                    FriendsListViewController.Friends.updateValue(child.value as! String, forKey: child.key as! String)
+                }
             }
         })
         
         for (key,value) in SearchUserTableViewController.users{
             print("key" + key)
             FIRDatabase.database().reference().child("users").child("\(key)").observe(.value, with: { (snapshot) in
-                var user = snapshot.key as! String
-                var useruid = snapshot.value as! String
+                var user = value as! String
+                var useruid = key as! String
                 print("user:" + user)
-                FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").observe(.value, with: { (snapshot) in
+                FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").observe(.value, with: { (thatshot) in
                     var friendIds = Array(FriendsListViewController.Friends.values)
                     
-                    FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendsRequest").observe(.value, with: { (picshot) in
-                        var requesterUID = picshot.key as! String
-                        
+                    FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").observe(.value, with: { (picshot) in
+                        print(picshot.value)
+                        var requesterUID = ["":false]
+                        if picshot.exists() == true{
+                            requesterUID = picshot.value as! [String:Bool]
+                        }
                         if (snapshot.exists() == false || snapshot.hasChildren() == false) && (picshot.exists() == false || picshot.hasChildren() == false) {
                             if useruid != FIRAuth.auth()?.currentUser?.uid as! String{
                                 if friendIds.contains(useruid) == false{
-                                    if requesterUID != useruid{
+                                    if requesterUID[useruid] != false{
                                         if SearchUserTableViewController.notAddedFriends.contains(user) == false{
                                             SearchUserTableViewController.notAddedFriends.append(user)
+                                            SearchUserTableViewController.notAddedIDs.append(useruid)
                                         }
                                     }
                                 }
@@ -112,32 +113,73 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UIApplicationDelega
                             }
                             
                         }else{
-                            for k in snapshot.value as! [String:Any] {
-                                print("k: " + "\(k)")
-                                if k.key.contains(user) == false {
-                                    if useruid != FIRAuth.auth()?.currentUser?.uid as! String{
-                                        if friendIds.contains(useruid) == false{
-                                            if requesterUID != useruid{
-                                                if SearchUserTableViewController.notAddedFriends.contains(user) == false{
-                                                    SearchUserTableViewController.notAddedFriends.append(user)
+                            if thatshot.exists() == true{
+                                for k in thatshot.value as! [String:Any] {
+                                    print("k: " + "\(k)")
+                                    if k.key.contains(user) == false {
+                                        if useruid != FIRAuth.auth()?.currentUser?.uid as! String{
+                                            if friendIds.contains(useruid) == false{
+                                                if requesterUID[useruid] != false{
+                                                    if SearchUserTableViewController.notAddedFriends.contains(user) == false{
+                                                        SearchUserTableViewController.notAddedFriends.append(user)
+                                                        SearchUserTableViewController.notAddedIDs.append(useruid)
+                                                    }
+                                                }
+                                            }else{
+                                                if SearchUserTableViewController.notAddedFriends.contains(user){
+                                                    SearchUserTableViewController.notAddedFriends.remove(at: SearchUserTableViewController.notAddedFriends.index(of: user)!)
+                                                    SearchUserTableViewController.notAddedIDs.remove(at: SearchUserTableViewController.notAddedIDs.index(of: useruid)!)
+                                                    
+                                                    
                                                 }
                                             }
-                                        }else{
-                                            if SearchUserTableViewController.notAddedFriends.contains(user){
-                                                SearchUserTableViewController.notAddedFriends.remove(at: SearchUserTableViewController.notAddedFriends.index(of: user)!)
+                                        }
+                                        
+                                    }
+                                }
+                            }else{
+                                if useruid != FIRAuth.auth()?.currentUser?.uid as! String{
+                                    if friendIds.contains(useruid) == false{
+                                        if requesterUID[useruid] != false{
+                                            if SearchUserTableViewController.notAddedFriends.contains(user) == false{
+                                                SearchUserTableViewController.notAddedFriends.append(user)
+                                                SearchUserTableViewController.notAddedIDs.append(useruid)
                                             }
+                                        }
+                                    }else{
+                                        if SearchUserTableViewController.notAddedFriends.contains(user){
+                                            SearchUserTableViewController.notAddedFriends.remove(at: SearchUserTableViewController.notAddedFriends.index(of: user)!)
+                                            SearchUserTableViewController.notAddedIDs.remove(at: SearchUserTableViewController.notAddedIDs.index(of: useruid)!)
+                                            
+                                            
                                         }
                                     }
                                     
+                                    
                                 }
                             }
+                            
                         }
                     })
                 })
             })
         }
+        
+        for friend in SearchUserTableViewController.notAddedIDs{
+            FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child(friend).observe(.value , with: { (snapshot) in
+                if snapshot.exists() == true{
+                    if SearchUserTableViewController.notAddedFriends.contains(SearchUserTableViewController.notAddedFriends[SearchUserTableViewController.notAddedIDs.index(of: friend) as! Int]){
+                        SearchUserTableViewController.notAddedFriends.remove(at: SearchUserTableViewController.notAddedIDs.index(of: friend) as! Int)
+                    }
+                    if SearchUserTableViewController.notAddedIDs.contains(friend){
+                        SearchUserTableViewController.notAddedIDs.remove(at: SearchUserTableViewController.notAddedIDs.index(of: friend) as! Int)
+                    }
+                    
+                }
+            })
+        }
+        print("Not added Friends: \(SearchUserTableViewController.notAddedFriends)")
     }
-
     
     
     @IBAction func LogIn(_ sender: Any) {
