@@ -1,0 +1,918 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3E946963884BFA21937C2C69 /* Pods_Let_s_TalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AB8FF4100EED6414A050E8 /* Pods_Let_s_TalkTests.framework */; };
+		DB8897F5D9F66D8F5929B95C /* Pods_Let_s_TalkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E522E31ECE8F7D824CCA58 /* Pods_Let_s_TalkUITests.framework */; };
+		F20567111EDDAF01004A2E35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20567101EDDAF01004A2E35 /* AppDelegate.swift */; };
+		F20567131EDDAF01004A2E35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20567121EDDAF01004A2E35 /* ViewController.swift */; };
+		F20567161EDDAF01004A2E35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F20567141EDDAF01004A2E35 /* Main.storyboard */; };
+		F20567191EDDAF01004A2E35 /* Let_s_Talk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F20567171EDDAF01004A2E35 /* Let_s_Talk.xcdatamodeld */; };
+		F205671B1EDDAF01004A2E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F205671A1EDDAF01004A2E35 /* Assets.xcassets */; };
+		F205671E1EDDAF01004A2E35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F205671C1EDDAF01004A2E35 /* LaunchScreen.storyboard */; };
+		F20567291EDDAF01004A2E35 /* Let_s_TalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20567281EDDAF01004A2E35 /* Let_s_TalkTests.swift */; };
+		F20567341EDDAF01004A2E35 /* Let_s_TalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20567331EDDAF01004A2E35 /* Let_s_TalkUITests.swift */; };
+		F20567461EDDC7D2004A2E35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F20567451EDDC7D2004A2E35 /* GoogleService-Info.plist */; };
+		F214039B1EEAF84A00F800C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F214039A1EEAF84A00F800C6 /* User.swift */; };
+		F214039D1EEAFDDE00F800C6 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F214039C1EEAFDDE00F800C6 /* UserCell.swift */; };
+		F21478661EEED16300526D00 /* default-pupil-profile.png in Resources */ = {isa = PBXBuildFile; fileRef = F21478651EEED16300526D00 /* default-pupil-profile.png */; };
+		F21478681EF0F7BB00526D00 /* QuestionSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21478671EF0F7BB00526D00 /* QuestionSelectViewController.swift */; };
+		F214C8321EF2F4110051C928 /* SendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F214C8311EF2F4110051C928 /* SendTableViewController.swift */; };
+		F214C8371EF3D0710051C928 /* TruthOrDareTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F214C8351EF3D0710051C928 /* TruthOrDareTableViewCell.swift */; };
+		F214C8381EF3D0710051C928 /* TruthOrDareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F214C8361EF3D0710051C928 /* TruthOrDareTableViewCell.xib */; };
+		F215E0F41EF189BC00CC9FC5 /* TextFieldEffects in Resources */ = {isa = PBXBuildFile; fileRef = F215E0F31EF189BC00CC9FC5 /* TextFieldEffects */; };
+		F215E0FF1EF2C3FF00CC9FC5 /* TruthOrDareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F215E0FE1EF2C3FF00CC9FC5 /* TruthOrDareViewController.swift */; };
+		F218953A1F1FB4C700E7D829 /* TruthOrDareReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21895381F1FB4C700E7D829 /* TruthOrDareReplyCell.swift */; };
+		F218953B1F1FB4C700E7D829 /* TruthOrDareReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21895391F1FB4C700E7D829 /* TruthOrDareReplyCell.xib */; };
+		F21A75D71EE7154200672F39 /* SnapContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21A75D51EE7154200672F39 /* SnapContainerViewController.swift */; };
+		F21A75D81EE7154200672F39 /* VerticalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21A75D61EE7154200672F39 /* VerticalScrollViewController.swift */; };
+		F21A75DB1EE71DED00672F39 /* Let'sTalkFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21A75DA1EE71DED00672F39 /* Let'sTalkFeedViewController.swift */; };
+		F21A75E11EE97BE700672F39 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21A75E01EE97BE700672F39 /* ProfileViewController.swift */; };
+		F22128EA1EE2510A00D381AC /* FriendsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22128E91EE2510A00D381AC /* FriendsListTableViewController.swift */; };
+		F22519F91F23FD9E0071DE6F /* refreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F22519F81F23FD9E0071DE6F /* refreshView.xib */; };
+		F279CB211EE2B88E00D93293 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F279CB201EE2B88E00D93293 /* CustomSearchBar.swift */; };
+		F279CB231EE2B8BB00D93293 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F279CB221EE2B8BB00D93293 /* CustomSearchController.swift */; };
+		F2CCDFFC1F25869E00358204 /* trash1600.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CCDFFB1F25869E00358204 /* trash1600.png */; };
+		F2F1F8841EDDDBBC00CE9F0C /* Let'sTalkInterface.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F1F8831EDDDBBC00CE9F0C /* Let'sTalkInterface.png */; };
+		F2F1F8861EDDE91300CE9F0C /* LetsTalkBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F1F8851EDDE91300CE9F0C /* LetsTalkBackground.png */; };
+		F2F1F8881EDDEC5900CE9F0C /* Let'sTalkSignUp.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F1F8871EDDEC5900CE9F0C /* Let'sTalkSignUp.png */; };
+		F2F1F88A1EDE0A1500CE9F0C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F1F8891EDE0A1500CE9F0C /* SignUpViewController.swift */; };
+		F2F1F88E1EE0477C00CE9F0C /* SearchUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F1F88D1EE0477C00CE9F0C /* SearchUserTableViewController.swift */; };
+		FDE71A30236833E4306EB6B0 /* Pods_Let_s_Talk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2F169DF9EF52F3CF1AED72 /* Pods_Let_s_Talk.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F20567251EDDAF01004A2E35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F20567051EDDAF01004A2E35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F205670C1EDDAF01004A2E35;
+			remoteInfo = "Let's Talk";
+		};
+		F20567301EDDAF01004A2E35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F20567051EDDAF01004A2E35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F205670C1EDDAF01004A2E35;
+			remoteInfo = "Let's Talk";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		43841AAA89E47C42E552D392 /* Pods-Let's Talk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's Talk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Let's Talk/Pods-Let's Talk.debug.xcconfig"; sourceTree = "<group>"; };
+		6D2F169DF9EF52F3CF1AED72 /* Pods_Let_s_Talk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Let_s_Talk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7515CA66E238E0D5DEE3E4B0 /* Pods-Let's TalkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's TalkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Let's TalkTests/Pods-Let's TalkTests.release.xcconfig"; sourceTree = "<group>"; };
+		76E522E31ECE8F7D824CCA58 /* Pods_Let_s_TalkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Let_s_TalkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C6252EFCBE33AC8CC31B41B /* Pods-Let's TalkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's TalkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Let's TalkUITests/Pods-Let's TalkUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C9CAB175E24EBF4C7F34A8FD /* Pods-Let's Talk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's Talk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Let's Talk/Pods-Let's Talk.release.xcconfig"; sourceTree = "<group>"; };
+		D3BF378A29D389762BB14DB0 /* Pods-Let's TalkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's TalkUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Let's TalkUITests/Pods-Let's TalkUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D5AB8FF4100EED6414A050E8 /* Pods_Let_s_TalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Let_s_TalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8B0BF4FE6B7B1A0FE955FBA /* Pods-Let's TalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Let's TalkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Let's TalkTests/Pods-Let's TalkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F205670D1EDDAF01004A2E35 /* Let's Talk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Let's Talk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F20567101EDDAF01004A2E35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F20567121EDDAF01004A2E35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F20567151EDDAF01004A2E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F20567181EDDAF01004A2E35 /* Let_s_Talk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Let_s_Talk.xcdatamodel; sourceTree = "<group>"; };
+		F205671A1EDDAF01004A2E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F205671D1EDDAF01004A2E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F205671F1EDDAF01004A2E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F20567241EDDAF01004A2E35 /* Let's TalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Let's TalkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F20567281EDDAF01004A2E35 /* Let_s_TalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Let_s_TalkTests.swift; sourceTree = "<group>"; };
+		F205672A1EDDAF01004A2E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F205672F1EDDAF01004A2E35 /* Let's TalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Let's TalkUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F20567331EDDAF01004A2E35 /* Let_s_TalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Let_s_TalkUITests.swift; sourceTree = "<group>"; };
+		F20567351EDDAF01004A2E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F20567451EDDC7D2004A2E35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F214039A1EEAF84A00F800C6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F214039C1EEAFDDE00F800C6 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		F21478651EEED16300526D00 /* default-pupil-profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-pupil-profile.png"; sourceTree = "<group>"; };
+		F21478671EF0F7BB00526D00 /* QuestionSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionSelectViewController.swift; sourceTree = "<group>"; };
+		F214C8311EF2F4110051C928 /* SendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendTableViewController.swift; sourceTree = "<group>"; };
+		F214C8351EF3D0710051C928 /* TruthOrDareTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruthOrDareTableViewCell.swift; sourceTree = "<group>"; };
+		F214C8361EF3D0710051C928 /* TruthOrDareTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TruthOrDareTableViewCell.xib; sourceTree = "<group>"; };
+		F215E0F31EF189BC00CC9FC5 /* TextFieldEffects */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TextFieldEffects; sourceTree = "<group>"; };
+		F215E0FE1EF2C3FF00CC9FC5 /* TruthOrDareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruthOrDareViewController.swift; sourceTree = "<group>"; };
+		F21895381F1FB4C700E7D829 /* TruthOrDareReplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruthOrDareReplyCell.swift; sourceTree = "<group>"; };
+		F21895391F1FB4C700E7D829 /* TruthOrDareReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TruthOrDareReplyCell.xib; sourceTree = "<group>"; };
+		F21A75D51EE7154200672F39 /* SnapContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapContainerViewController.swift; path = "Let's Talk/SnapContainerViewController.swift"; sourceTree = "<group>"; };
+		F21A75D61EE7154200672F39 /* VerticalScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerticalScrollViewController.swift; path = "Let's Talk/VerticalScrollViewController.swift"; sourceTree = "<group>"; };
+		F21A75DA1EE71DED00672F39 /* Let'sTalkFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Let'sTalkFeedViewController.swift"; sourceTree = "<group>"; };
+		F21A75E01EE97BE700672F39 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F22128E91EE2510A00D381AC /* FriendsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewController.swift; sourceTree = "<group>"; };
+		F22519F81F23FD9E0071DE6F /* refreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = refreshView.xib; sourceTree = "<group>"; };
+		F279CB201EE2B88E00D93293 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		F279CB221EE2B8BB00D93293 /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
+		F2CCDFFB1F25869E00358204 /* trash1600.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash1600.png; sourceTree = "<group>"; };
+		F2F1F87C1EDDC9B400CE9F0C /* Let's Talk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Let's Talk.entitlements"; sourceTree = "<group>"; };
+		F2F1F8831EDDDBBC00CE9F0C /* Let'sTalkInterface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Let'sTalkInterface.png"; sourceTree = "<group>"; };
+		F2F1F8851EDDE91300CE9F0C /* LetsTalkBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LetsTalkBackground.png; sourceTree = "<group>"; };
+		F2F1F8871EDDEC5900CE9F0C /* Let'sTalkSignUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Let'sTalkSignUp.png"; sourceTree = "<group>"; };
+		F2F1F8891EDE0A1500CE9F0C /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		F2F1F88C1EDE31F500CE9F0C /* Let's Talk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Let's Talk-Bridging-Header.h"; sourceTree = "<group>"; };
+		F2F1F88D1EE0477C00CE9F0C /* SearchUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F205670A1EDDAF01004A2E35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDE71A30236833E4306EB6B0 /* Pods_Let_s_Talk.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F20567211EDDAF01004A2E35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E946963884BFA21937C2C69 /* Pods_Let_s_TalkTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F205672C1EDDAF01004A2E35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB8897F5D9F66D8F5929B95C /* Pods_Let_s_TalkUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		35A1FCD6D17D56E6BA1416E0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				43841AAA89E47C42E552D392 /* Pods-Let's Talk.debug.xcconfig */,
+				C9CAB175E24EBF4C7F34A8FD /* Pods-Let's Talk.release.xcconfig */,
+				D8B0BF4FE6B7B1A0FE955FBA /* Pods-Let's TalkTests.debug.xcconfig */,
+				7515CA66E238E0D5DEE3E4B0 /* Pods-Let's TalkTests.release.xcconfig */,
+				D3BF378A29D389762BB14DB0 /* Pods-Let's TalkUITests.debug.xcconfig */,
+				7C6252EFCBE33AC8CC31B41B /* Pods-Let's TalkUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CE32F3159A8C47EDFC71C141 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D2F169DF9EF52F3CF1AED72 /* Pods_Let_s_Talk.framework */,
+				D5AB8FF4100EED6414A050E8 /* Pods_Let_s_TalkTests.framework */,
+				76E522E31ECE8F7D824CCA58 /* Pods_Let_s_TalkUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F20567041EDDAF01004A2E35 = {
+			isa = PBXGroup;
+			children = (
+				F205670F1EDDAF01004A2E35 /* Let's Talk */,
+				F20567271EDDAF01004A2E35 /* Let's TalkTests */,
+				F20567321EDDAF01004A2E35 /* Let's TalkUITests */,
+				F205670E1EDDAF01004A2E35 /* Products */,
+				35A1FCD6D17D56E6BA1416E0 /* Pods */,
+				CE32F3159A8C47EDFC71C141 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F205670E1EDDAF01004A2E35 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F205670D1EDDAF01004A2E35 /* Let's Talk.app */,
+				F20567241EDDAF01004A2E35 /* Let's TalkTests.xctest */,
+				F205672F1EDDAF01004A2E35 /* Let's TalkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F205670F1EDDAF01004A2E35 /* Let's Talk */ = {
+			isa = PBXGroup;
+			children = (
+				F2F1F87C1EDDC9B400CE9F0C /* Let's Talk.entitlements */,
+				F20567101EDDAF01004A2E35 /* AppDelegate.swift */,
+				F22519F81F23FD9E0071DE6F /* refreshView.xib */,
+				F215E0FD1EF2B68B00CC9FC5 /* Friends Views */,
+				F21403971EEAEB9D00F800C6 /* Authentication and Login */,
+				F20567141EDDAF01004A2E35 /* Main.storyboard */,
+				F214C8301EF2F3DD0051C928 /* Games */,
+				F214C8331EF37F0A0051C928 /* Profile */,
+				F214C8341EF3CFBA0051C928 /* Feed */,
+				F21403991EEAF69D00F800C6 /* Friending Users */,
+				F21A75D91EE7155200672F39 /* ContainerView */,
+				F205671A1EDDAF01004A2E35 /* Assets.xcassets */,
+				F205671C1EDDAF01004A2E35 /* LaunchScreen.storyboard */,
+				F2F1F8831EDDDBBC00CE9F0C /* Let'sTalkInterface.png */,
+				F2F1F8851EDDE91300CE9F0C /* LetsTalkBackground.png */,
+				F2F1F8871EDDEC5900CE9F0C /* Let'sTalkSignUp.png */,
+				F21478651EEED16300526D00 /* default-pupil-profile.png */,
+				F2CCDFFB1F25869E00358204 /* trash1600.png */,
+				F205671F1EDDAF01004A2E35 /* Info.plist */,
+				F20567451EDDC7D2004A2E35 /* GoogleService-Info.plist */,
+				F2F1F88C1EDE31F500CE9F0C /* Let's Talk-Bridging-Header.h */,
+				F20567171EDDAF01004A2E35 /* Let_s_Talk.xcdatamodeld */,
+				F215E0F31EF189BC00CC9FC5 /* TextFieldEffects */,
+			);
+			path = "Let's Talk";
+			sourceTree = "<group>";
+		};
+		F20567271EDDAF01004A2E35 /* Let's TalkTests */ = {
+			isa = PBXGroup;
+			children = (
+				F20567281EDDAF01004A2E35 /* Let_s_TalkTests.swift */,
+				F205672A1EDDAF01004A2E35 /* Info.plist */,
+			);
+			path = "Let's TalkTests";
+			sourceTree = "<group>";
+		};
+		F20567321EDDAF01004A2E35 /* Let's TalkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F20567331EDDAF01004A2E35 /* Let_s_TalkUITests.swift */,
+				F20567351EDDAF01004A2E35 /* Info.plist */,
+			);
+			path = "Let's TalkUITests";
+			sourceTree = "<group>";
+		};
+		F21403971EEAEB9D00F800C6 /* Authentication and Login */ = {
+			isa = PBXGroup;
+			children = (
+				F2F1F8891EDE0A1500CE9F0C /* SignUpViewController.swift */,
+				F20567121EDDAF01004A2E35 /* ViewController.swift */,
+			);
+			name = "Authentication and Login";
+			sourceTree = "<group>";
+		};
+		F21403991EEAF69D00F800C6 /* Friending Users */ = {
+			isa = PBXGroup;
+			children = (
+				F2F1F88D1EE0477C00CE9F0C /* SearchUserTableViewController.swift */,
+				F279CB201EE2B88E00D93293 /* CustomSearchBar.swift */,
+				F279CB221EE2B8BB00D93293 /* CustomSearchController.swift */,
+			);
+			name = "Friending Users";
+			sourceTree = "<group>";
+		};
+		F214C8301EF2F3DD0051C928 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				F21478671EF0F7BB00526D00 /* QuestionSelectViewController.swift */,
+				F215E0FE1EF2C3FF00CC9FC5 /* TruthOrDareViewController.swift */,
+				F214C8311EF2F4110051C928 /* SendTableViewController.swift */,
+			);
+			name = Games;
+			sourceTree = "<group>";
+		};
+		F214C8331EF37F0A0051C928 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F21A75E01EE97BE700672F39 /* ProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		F214C8341EF3CFBA0051C928 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				F21A75DA1EE71DED00672F39 /* Let'sTalkFeedViewController.swift */,
+				F214C8351EF3D0710051C928 /* TruthOrDareTableViewCell.swift */,
+				F214C8361EF3D0710051C928 /* TruthOrDareTableViewCell.xib */,
+				F21895381F1FB4C700E7D829 /* TruthOrDareReplyCell.swift */,
+				F21895391F1FB4C700E7D829 /* TruthOrDareReplyCell.xib */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
+		F215E0FD1EF2B68B00CC9FC5 /* Friends Views */ = {
+			isa = PBXGroup;
+			children = (
+				F214039A1EEAF84A00F800C6 /* User.swift */,
+				F214039C1EEAFDDE00F800C6 /* UserCell.swift */,
+				F22128E91EE2510A00D381AC /* FriendsListTableViewController.swift */,
+			);
+			name = "Friends Views";
+			sourceTree = "<group>";
+		};
+		F21A75D91EE7155200672F39 /* ContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				F21A75D61EE7154200672F39 /* VerticalScrollViewController.swift */,
+				F21A75D51EE7154200672F39 /* SnapContainerViewController.swift */,
+			);
+			name = ContainerView;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F205670C1EDDAF01004A2E35 /* Let's Talk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F20567381EDDAF01004A2E35 /* Build configuration list for PBXNativeTarget "Let's Talk" */;
+			buildPhases = (
+				BD3717EAA90EDA29FE739A15 /* [CP] Check Pods Manifest.lock */,
+				F20567091EDDAF01004A2E35 /* Sources */,
+				F205670A1EDDAF01004A2E35 /* Frameworks */,
+				F205670B1EDDAF01004A2E35 /* Resources */,
+				FB1192C1970CDD9280A1D895 /* [CP] Embed Pods Frameworks */,
+				BEBE118A35E9B26F2E89AD78 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Let's Talk";
+			productName = "Let's Talk";
+			productReference = F205670D1EDDAF01004A2E35 /* Let's Talk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F20567231EDDAF01004A2E35 /* Let's TalkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F205673B1EDDAF01004A2E35 /* Build configuration list for PBXNativeTarget "Let's TalkTests" */;
+			buildPhases = (
+				0D3D780278BF5C845889D1D4 /* [CP] Check Pods Manifest.lock */,
+				F20567201EDDAF01004A2E35 /* Sources */,
+				F20567211EDDAF01004A2E35 /* Frameworks */,
+				F20567221EDDAF01004A2E35 /* Resources */,
+				F02FDC372CBF08CA730419D8 /* [CP] Embed Pods Frameworks */,
+				DEC4994E419BFBEBF04BEEFC /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F20567261EDDAF01004A2E35 /* PBXTargetDependency */,
+			);
+			name = "Let's TalkTests";
+			productName = "Let's TalkTests";
+			productReference = F20567241EDDAF01004A2E35 /* Let's TalkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F205672E1EDDAF01004A2E35 /* Let's TalkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F205673E1EDDAF01004A2E35 /* Build configuration list for PBXNativeTarget "Let's TalkUITests" */;
+			buildPhases = (
+				55CBC8F45E6B4525C0BAAA40 /* [CP] Check Pods Manifest.lock */,
+				F205672B1EDDAF01004A2E35 /* Sources */,
+				F205672C1EDDAF01004A2E35 /* Frameworks */,
+				F205672D1EDDAF01004A2E35 /* Resources */,
+				BB8C17F55C490D5F2707D815 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F20567311EDDAF01004A2E35 /* PBXTargetDependency */,
+			);
+			name = "Let's TalkUITests";
+			productName = "Let's TalkUITests";
+			productReference = F205672F1EDDAF01004A2E35 /* Let's TalkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F20567051EDDAF01004A2E35 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Cameron Bennett";
+				TargetAttributes = {
+					F205670C1EDDAF01004A2E35 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = A24WQ4F927;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+					F20567231EDDAF01004A2E35 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = A24WQ4F927;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F205670C1EDDAF01004A2E35;
+					};
+					F205672E1EDDAF01004A2E35 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = A24WQ4F927;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F205670C1EDDAF01004A2E35;
+					};
+				};
+			};
+			buildConfigurationList = F20567081EDDAF01004A2E35 /* Build configuration list for PBXProject "Let's Talk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F20567041EDDAF01004A2E35;
+			productRefGroup = F205670E1EDDAF01004A2E35 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F205670C1EDDAF01004A2E35 /* Let's Talk */,
+				F20567231EDDAF01004A2E35 /* Let's TalkTests */,
+				F205672E1EDDAF01004A2E35 /* Let's TalkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F205670B1EDDAF01004A2E35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F214C8381EF3D0710051C928 /* TruthOrDareTableViewCell.xib in Resources */,
+				F205671E1EDDAF01004A2E35 /* LaunchScreen.storyboard in Resources */,
+				F2F1F8861EDDE91300CE9F0C /* LetsTalkBackground.png in Resources */,
+				F20567461EDDC7D2004A2E35 /* GoogleService-Info.plist in Resources */,
+				F215E0F41EF189BC00CC9FC5 /* TextFieldEffects in Resources */,
+				F2F1F8841EDDDBBC00CE9F0C /* Let'sTalkInterface.png in Resources */,
+				F22519F91F23FD9E0071DE6F /* refreshView.xib in Resources */,
+				F218953B1F1FB4C700E7D829 /* TruthOrDareReplyCell.xib in Resources */,
+				F2F1F8881EDDEC5900CE9F0C /* Let'sTalkSignUp.png in Resources */,
+				F205671B1EDDAF01004A2E35 /* Assets.xcassets in Resources */,
+				F21478661EEED16300526D00 /* default-pupil-profile.png in Resources */,
+				F20567161EDDAF01004A2E35 /* Main.storyboard in Resources */,
+				F2CCDFFC1F25869E00358204 /* trash1600.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F20567221EDDAF01004A2E35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F205672D1EDDAF01004A2E35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D3D780278BF5C845889D1D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		55CBC8F45E6B4525C0BAAA40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BB8C17F55C490D5F2707D815 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Let's TalkUITests/Pods-Let's TalkUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD3717EAA90EDA29FE739A15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BEBE118A35E9B26F2E89AD78 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Let's Talk/Pods-Let's Talk-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEC4994E419BFBEBF04BEEFC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Let's TalkTests/Pods-Let's TalkTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F02FDC372CBF08CA730419D8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Let's TalkTests/Pods-Let's TalkTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB1192C1970CDD9280A1D895 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Let's Talk/Pods-Let's Talk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F20567091EDDAF01004A2E35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F214039B1EEAF84A00F800C6 /* User.swift in Sources */,
+				F279CB211EE2B88E00D93293 /* CustomSearchBar.swift in Sources */,
+				F21A75DB1EE71DED00672F39 /* Let'sTalkFeedViewController.swift in Sources */,
+				F20567131EDDAF01004A2E35 /* ViewController.swift in Sources */,
+				F218953A1F1FB4C700E7D829 /* TruthOrDareReplyCell.swift in Sources */,
+				F20567191EDDAF01004A2E35 /* Let_s_Talk.xcdatamodeld in Sources */,
+				F2F1F88A1EDE0A1500CE9F0C /* SignUpViewController.swift in Sources */,
+				F214039D1EEAFDDE00F800C6 /* UserCell.swift in Sources */,
+				F215E0FF1EF2C3FF00CC9FC5 /* TruthOrDareViewController.swift in Sources */,
+				F279CB231EE2B8BB00D93293 /* CustomSearchController.swift in Sources */,
+				F21A75E11EE97BE700672F39 /* ProfileViewController.swift in Sources */,
+				F214C8371EF3D0710051C928 /* TruthOrDareTableViewCell.swift in Sources */,
+				F21A75D71EE7154200672F39 /* SnapContainerViewController.swift in Sources */,
+				F214C8321EF2F4110051C928 /* SendTableViewController.swift in Sources */,
+				F21478681EF0F7BB00526D00 /* QuestionSelectViewController.swift in Sources */,
+				F22128EA1EE2510A00D381AC /* FriendsListTableViewController.swift in Sources */,
+				F21A75D81EE7154200672F39 /* VerticalScrollViewController.swift in Sources */,
+				F20567111EDDAF01004A2E35 /* AppDelegate.swift in Sources */,
+				F2F1F88E1EE0477C00CE9F0C /* SearchUserTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F20567201EDDAF01004A2E35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F20567291EDDAF01004A2E35 /* Let_s_TalkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F205672B1EDDAF01004A2E35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F20567341EDDAF01004A2E35 /* Let_s_TalkUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F20567261EDDAF01004A2E35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F205670C1EDDAF01004A2E35 /* Let's Talk */;
+			targetProxy = F20567251EDDAF01004A2E35 /* PBXContainerItemProxy */;
+		};
+		F20567311EDDAF01004A2E35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F205670C1EDDAF01004A2E35 /* Let's Talk */;
+			targetProxy = F20567301EDDAF01004A2E35 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F20567141EDDAF01004A2E35 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F20567151EDDAF01004A2E35 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F205671C1EDDAF01004A2E35 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F205671D1EDDAF01004A2E35 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F20567361EDDAF01004A2E35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F20567371EDDAF01004A2E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F20567391EDDAF01004A2E35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43841AAA89E47C42E552D392 /* Pods-Let's Talk.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Let's Talk/Let's Talk.entitlements";
+				COMPRESS_PNG_FILES = NO;
+				DEVELOPMENT_TEAM = A24WQ4F927;
+				INFOPLIST_FILE = "Let's Talk/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Cameron-s-Apps.LetsTalk";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Let's Talk/Let's Talk-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F205673A1EDDAF01004A2E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9CAB175E24EBF4C7F34A8FD /* Pods-Let's Talk.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Let's Talk/Let's Talk.entitlements";
+				COMPRESS_PNG_FILES = NO;
+				DEVELOPMENT_TEAM = A24WQ4F927;
+				INFOPLIST_FILE = "Let's Talk/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Cameron-s-Apps.LetsTalk";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Let's Talk/Let's Talk-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		F205673C1EDDAF01004A2E35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8B0BF4FE6B7B1A0FE955FBA /* Pods-Let's TalkTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = A24WQ4F927;
+				INFOPLIST_FILE = "Let's TalkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Cameron-s-Apps.Let-s-TalkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Let's Talk.app/Let's Talk";
+			};
+			name = Debug;
+		};
+		F205673D1EDDAF01004A2E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7515CA66E238E0D5DEE3E4B0 /* Pods-Let's TalkTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = A24WQ4F927;
+				INFOPLIST_FILE = "Let's TalkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Cameron-s-Apps.Let-s-TalkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Let's Talk.app/Let's Talk";
+			};
+			name = Release;
+		};
+		F205673F1EDDAF01004A2E35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3BF378A29D389762BB14DB0 /* Pods-Let's TalkUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = A24WQ4F927;
+				INFOPLIST_FILE = "Let's TalkUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Cameron-s-Apps.Let-s-TalkUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Let's Talk";
+			};
+			name = Debug;
+		};
+		F20567401EDDAF01004A2E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C6252EFCBE33AC8CC31B41B /* Pods-Let's TalkUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = A24WQ4F927;
+				INFOPLIST_FILE = "Let's TalkUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Cameron-s-Apps.Let-s-TalkUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Let's Talk";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F20567081EDDAF01004A2E35 /* Build configuration list for PBXProject "Let's Talk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F20567361EDDAF01004A2E35 /* Debug */,
+				F20567371EDDAF01004A2E35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F20567381EDDAF01004A2E35 /* Build configuration list for PBXNativeTarget "Let's Talk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F20567391EDDAF01004A2E35 /* Debug */,
+				F205673A1EDDAF01004A2E35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F205673B1EDDAF01004A2E35 /* Build configuration list for PBXNativeTarget "Let's TalkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F205673C1EDDAF01004A2E35 /* Debug */,
+				F205673D1EDDAF01004A2E35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F205673E1EDDAF01004A2E35 /* Build configuration list for PBXNativeTarget "Let's TalkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F205673F1EDDAF01004A2E35 /* Debug */,
+				F20567401EDDAF01004A2E35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F20567171EDDAF01004A2E35 /* Let_s_Talk.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F20567181EDDAF01004A2E35 /* Let_s_Talk.xcdatamodel */,
+			);
+			currentVersion = F20567181EDDAF01004A2E35 /* Let_s_Talk.xcdatamodel */;
+			path = Let_s_Talk.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F20567051EDDAF01004A2E35 /* Project object */;
+}

@@ -1,0 +1,6 @@
+framework module Pods_Let_s_TalkTests {
+  umbrella header "Pods-Let's TalkTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
