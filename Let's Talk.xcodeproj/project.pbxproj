@@ -33,6 +33,8 @@
 		F21A75D81EE7154200672F39 /* VerticalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21A75D61EE7154200672F39 /* VerticalScrollViewController.swift */; };
 		F21A75DB1EE71DED00672F39 /* Let'sTalkFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21A75DA1EE71DED00672F39 /* Let'sTalkFeedViewController.swift */; };
 		F21A75E11EE97BE700672F39 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21A75E01EE97BE700672F39 /* ProfileViewController.swift */; };
+		F21D27F51F2BCD32003BED43 /* FriendRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21D27F31F2BCD32003BED43 /* FriendRequestTableViewCell.swift */; };
+		F21D27F61F2BCD32003BED43 /* FriendRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21D27F41F2BCD32003BED43 /* FriendRequestTableViewCell.xib */; };
 		F22128EA1EE2510A00D381AC /* FriendsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22128E91EE2510A00D381AC /* FriendsListTableViewController.swift */; };
 		F22519F91F23FD9E0071DE6F /* refreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F22519F81F23FD9E0071DE6F /* refreshView.xib */; };
 		F279CB211EE2B88E00D93293 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F279CB201EE2B88E00D93293 /* CustomSearchBar.swift */; };
@@ -103,6 +105,8 @@
 		F21A75D61EE7154200672F39 /* VerticalScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerticalScrollViewController.swift; path = "Let's Talk/VerticalScrollViewController.swift"; sourceTree = "<group>"; };
 		F21A75DA1EE71DED00672F39 /* Let'sTalkFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Let'sTalkFeedViewController.swift"; sourceTree = "<group>"; };
 		F21A75E01EE97BE700672F39 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F21D27F31F2BCD32003BED43 /* FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
+		F21D27F41F2BCD32003BED43 /* FriendRequestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendRequestTableViewCell.xib; sourceTree = "<group>"; };
 		F22128E91EE2510A00D381AC /* FriendsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewController.swift; sourceTree = "<group>"; };
 		F22519F81F23FD9E0071DE6F /* refreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = refreshView.xib; sourceTree = "<group>"; };
 		F279CB201EE2B88E00D93293 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
@@ -283,6 +287,8 @@
 				F214C8361EF3D0710051C928 /* TruthOrDareTableViewCell.xib */,
 				F21895381F1FB4C700E7D829 /* TruthOrDareReplyCell.swift */,
 				F21895391F1FB4C700E7D829 /* TruthOrDareReplyCell.xib */,
+				F21D27F31F2BCD32003BED43 /* FriendRequestTableViewCell.swift */,
+				F21D27F41F2BCD32003BED43 /* FriendRequestTableViewCell.xib */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 				F214C8381EF3D0710051C928 /* TruthOrDareTableViewCell.xib in Resources */,
 				F205671E1EDDAF01004A2E35 /* LaunchScreen.storyboard in Resources */,
 				F2F1F8861EDDE91300CE9F0C /* LetsTalkBackground.png in Resources */,
+				F21D27F61F2BCD32003BED43 /* FriendRequestTableViewCell.xib in Resources */,
 				F20567461EDDC7D2004A2E35 /* GoogleService-Info.plist in Resources */,
 				F215E0F41EF189BC00CC9FC5 /* TextFieldEffects in Resources */,
 				F2F1F8841EDDDBBC00CE9F0C /* Let'sTalkInterface.png in Resources */,
@@ -609,6 +616,7 @@
 				F22128EA1EE2510A00D381AC /* FriendsListTableViewController.swift in Sources */,
 				F21A75D81EE7154200672F39 /* VerticalScrollViewController.swift in Sources */,
 				F20567111EDDAF01004A2E35 /* AppDelegate.swift in Sources */,
+				F21D27F51F2BCD32003BED43 /* FriendRequestTableViewCell.swift in Sources */,
 				F2F1F88E1EE0477C00CE9F0C /* SearchUserTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

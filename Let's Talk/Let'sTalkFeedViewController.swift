@@ -20,8 +20,13 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
     var isExpanded = false
     static var TruthOrDareQuestions = [String:String]()
     static var TruthOrDareReplies = [String:String]()
+    static var friendRequests = [String:Bool]()
     var Users = [String]()
     var refresh = UIRefreshControl()
+    
+    var Questions = Array(Let_sTalkFeedViewController.TruthOrDareQuestions.values)
+    var Replies = Array(Let_sTalkFeedViewController.TruthOrDareReplies.values)
+    var Requests: Array<String> = []
     
     @IBOutlet weak var feedView: UITableView!
     
@@ -31,6 +36,7 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
         updateFriends()
         loadPosts()
         loadReplies()
+        loadRequests()
     }
     
     
@@ -41,6 +47,7 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
         updateFriends()
         loadPosts()
         loadReplies()
+        loadRequests()
         
         refresh.backgroundColor = UIColor.clear
         loadRefreshControl()
@@ -71,14 +78,14 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
         updateFriends()
         loadPosts()
         loadReplies()
-        
+        loadRequests()
         loadDatabase()
         feedView.reloadData()
         refresh.endRefreshing()
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var RowCount = Let_sTalkFeedViewController.TruthOrDareQuestions.count + Let_sTalkFeedViewController.TruthOrDareReplies.count
+        var RowCount = Let_sTalkFeedViewController.TruthOrDareQuestions.count + Let_sTalkFeedViewController.TruthOrDareReplies.count + Let_sTalkFeedViewController.friendRequests.count
         return RowCount
 // your number of cell here
     }
@@ -86,26 +93,25 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedIndex = indexPath
         self.didExpandCell()
-        let cell = feedView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TruthOrDareTableViewCell
-        
+        let cell = feedView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isExpanded && self.selectedIndex == indexPath{
+            if feedView.cellForRow(at: indexPath)?.tag == 2{
+               
+                return 150
+            }else{
             
             return 262
+        }
         }
         return 150
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-
-        var Questions = Array(Let_sTalkFeedViewController.TruthOrDareQuestions.values)
-        var Replies = Array(Let_sTalkFeedViewController.TruthOrDareReplies.values)
         
         if indexPath.row <= Questions.count - 1 {
-           print("Questions Count: \(Questions.count)  Replies Count: \(Replies.count)")
         let cell = Bundle.main.loadNibNamed("TruthOrDareTableViewCell", owner: self, options: nil)?.first as! TruthOrDareTableViewCell
         
         cell.questionLabel?.text! = Questions[indexPath.row]
@@ -114,7 +120,7 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
         cell.sendersNameLabel?.text! = sender as! String
             return cell
             
-        }else{
+        }else if indexPath.row <= Questions.count + Replies.count - 1{
             
         let cell = Bundle.main.loadNibNamed("TruthOrDareReplyCell", owner: self, options: nil)?.first as! TruthOrDareReplyCell
         //cell.questionLabel.text =
@@ -124,6 +130,17 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
         cell.sendersNameLabel?.text! = sender as! String
             return cell
             
+        }else{
+            let cell = Bundle.main.loadNibNamed("FriendRequestTableViewCell", owner: self, options: nil)?.first as! FriendRequestTableViewCell
+            if self.Requests.count >= 0{
+            cell.requestID = Requests[indexPath.row - (Questions.count + Replies.count)]
+            ref.child("users").observe(.value, with: { (snapshot) in
+                let sender = snapshot.childSnapshot(forPath: self.Requests[indexPath.row - (self.Questions.count + self.Replies.count)]).value
+                cell.requestName?.text! = sender as! String
+            })
+            }
+            
+            return cell
         }
 
     }
@@ -146,7 +163,7 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
     
     func didExpandCell(){
         self.isExpanded = !isExpanded
-        self.feedView.reloadRows(at: [selectedIndex!], with: .automatic)
+        self.feedView.reloadRows(at: [selectedIndex!], with: .fade)
     }
     
     func loadAllUsers(){
@@ -277,6 +294,22 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
                     }
                 }
             }
+        })
+    }
+    
+    func loadRequests(){
+        FIRDatabase.database().reference().child("FriendsList").child(FIRAuth.auth()?.currentUser?.uid as! String).child("FriendRequest").observe(.value, with: { (snapshot) in
+            print("Snapthot: \(snapshot.value)")
+            for person in snapshot.value as! [String:Any]{
+                Let_sTalkFeedViewController.friendRequests.updateValue(person.value as! Bool, forKey: person.key)
+                
+            }
+            for that in Let_sTalkFeedViewController.friendRequests as! [String:Bool]{
+                    if that.value == false{
+                        self.Requests.append(that.key)
+                        print(self.Requests)
+                }
+                }
         })
     }
 

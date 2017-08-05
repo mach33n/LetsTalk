@@ -14,7 +14,6 @@ import GoogleSignIn
 class ViewController: UIViewController, GIDSignInUIDelegate, UIApplicationDelegate, UITextFieldDelegate{
 
     var window: UIWindow?
-    var ref: FIRDatabaseReference!
     
     
     @IBOutlet weak var errorLabel: UILabel!
@@ -27,7 +26,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UIApplicationDelega
         super.viewDidLoad()
         self.emailText.delegate = self
         self.passwordText.delegate = self
-        ref = FIRDatabase.database().reference()
         /*FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if user != nil {
                 self.performSegue(withIdentifier: "toHome", sender: nil)
@@ -69,7 +67,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UIApplicationDelega
     
     func loadDatabase(){
         
-        ref.child("users").observe(.value, with: { (snapshot) in
+        FIRDatabase.database().reference().child("users").observe(.value, with: { (snapshot) in
             for child in snapshot.value as! [String:String]{
                 SearchUserTableViewController.users.updateValue(child.value as! String, forKey: child.key as! String)
             }}
