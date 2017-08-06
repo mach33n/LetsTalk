@@ -30,23 +30,29 @@ class FriendRequestTableViewCell: UITableViewCell {
     }
     
     @IBAction func accept(_ sender: Any) {
+        var thisDeviceName = ""
+        for person in SearchUserTableViewController.users{
+            if person.key == FIRAuth.auth()?.currentUser?.uid as! String{
+                thisDeviceName = person.value as! String
+            }
+        }
+        
         if requestID != ""{
             FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(requestID as! String)").setValue(true)
             
-            self.handle = FIRDatabase.database().reference().child("FriendsList").child(requestID as! String).child("FriendRequest").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").observe(.value, with: { (picshot) in
+            FIRDatabase.database().reference().child("FriendsList").child(requestID as! String).child("FriendRequest").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").observe(.value, with: { (picshot) in
                 if picshot.exists() == true{
-                    if picshot.value as! Bool == true {
-                        FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").child("\(self.requestID)").setValue(self.requestName.text as! String)
+                    
+                    FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").child("\(self.requestID)").setValue(self.requestName.text as! String)
                         
-                        FIRDatabase.database().reference().child("FriendsList").child("\(self.requestID as! String)").child("Friends").child("\(self.allUsers[self.find(objecToFind: FIRAuth.auth()?.currentUser?.uid)!])").setValue(FIRAuth.auth()?.currentUser?.uid as! String)
+                        FIRDatabase.database().reference().child("FriendsList").child("\(self.requestID as! String)").child("Friends").child("\(FIRAuth.auth()?.currentUser?.uid)").setValue(thisDeviceName as! String)
+                    
                         FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(self.requestID)").removeValue(completionBlock: { (error, ref) in
                             if error != nil {
                                 print("error \(error)")
                             }
                         })
-                    }else{
-                        //send request
-                    }
+                    
                 }else{
                     FIRDatabase.database().reference().child("FriendsList").child(self.requestID as! String).child("FriendRequest").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").setValue(false)
                 }
@@ -58,16 +64,32 @@ class FriendRequestTableViewCell: UITableViewCell {
     }
     
     @IBAction func reject(_ sender: Any) {
-        
-    }
-    
-    func find(objecToFind: String?) -> Int? {
-        for i in 0...self.allUserIDs.count {
-            if self.allUserIDs[i] as! String == objecToFind {
-                return i
+        var thisDeviceName = ""
+        for person in SearchUserTableViewController.users{
+            if person.key == FIRAuth.auth()?.currentUser?.uid as! String{
+                thisDeviceName = person.value as! String
             }
         }
-        return nil
+        if requestID != ""{
+        FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(requestID as! String)").setValue(false)
+        
+            self.handle = FIRDatabase.database().reference().child("FriendsList").child(requestID as! String).child("FriendRequest").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").observe(.value, with: { (picshot) in
+                if picshot.exists() == true{
+                    FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(self.requestID)").removeValue()
+                    
+                    FIRDatabase.database().reference().child("FriendsList").child("\(self.requestID as! String)").child("FriendRequest").child("\(thisDeviceName)").removeValue()
+                    
+                    FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(self.requestID)").removeValue(completionBlock: { (error, ref) in
+                        
+                        if error != nil {
+                            print("error \(error)")
+                        }
+                    })
+                    
+                }
+            })
+            
+        }
     }
     
 }

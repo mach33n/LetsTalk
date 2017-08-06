@@ -65,7 +65,7 @@ class SearchUserTableViewController: UITableViewController, UISearchResultsUpdat
             return filteredArray.count
         }
         else {
-        return SearchUserTableViewController.notAddedFriends.count
+        return 0
     }
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,11 +75,7 @@ class SearchUserTableViewController: UITableViewController, UISearchResultsUpdat
             cell.textLabel?.text = filteredArray[indexPath.row]
         }
         else {
-            if SearchUserTableViewController.notAddedFriends.count != 0{
-            cell.textLabel?.text = SearchUserTableViewController
-                .notAddedFriends[indexPath.row]
-            }else{
-            }
+           
         }
     
         return cell
@@ -93,23 +89,31 @@ class SearchUserTableViewController: UITableViewController, UISearchResultsUpdat
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         
+        var id = ""
+        
+            for bleh in SearchUserTableViewController.users{
+                if bleh.value as! String == tableView.cellForRow(at: indexPath)?.textLabel?.text as! String{
+                    id = bleh.key
+                    print(id)
+                }
+            }
+        
         var myIndex = indexPath.row
         
-        ref.child("users").child("\(SearchUserTableViewController.notAddedIDs[indexPath.row] as! String)").observe(.value, with: { (snapshot) in
-            
-            if FIRAuth.auth()?.currentUser?.uid == SearchUserTableViewController.notAddedIDs[indexPath.row] as! String{
+            if FIRAuth.auth()?.currentUser?.uid == id as! String{
                 
             }else{
             
-        FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(snapshot.key as! String)").setValue(true)
+        FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(id as! String)").setValue(true)
                 
-                 self.handle = FIRDatabase.database().reference().child("FriendsList").child(snapshot.key as! String).child("FriendRequest").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").observe(.value, with: { (picshot) in
+                 self.handle = FIRDatabase.database().reference().child("FriendsList").child(id as! String).child("FriendRequest").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").observe(.value, with: { (picshot) in
                     if picshot.exists() == true{
                     if picshot.value as! Bool == true {
-                    FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").child("\(snapshot.value)").setValue(snapshot.key as! String)
                         
-                        FIRDatabase.database().reference().child("FriendsList").child("\(snapshot.key as! String)").child("Friends").child("\(self.allUsers[self.find(objecToFind: FIRAuth.auth()?.currentUser?.uid)!])").setValue(FIRAuth.auth()?.currentUser?.uid as! String)
-                    self.ref.child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(snapshot.key)").removeValue(completionBlock: { (error, ref) in
+                    FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").child("\(id as! String)").setValue(cell.detailTextLabel?.text as! String)
+                        
+                        FIRDatabase.database().reference().child("FriendsList").child("\(id as! String)").child("Friends").child("\(self.allUsers[self.find(objecToFind: FIRAuth.auth()?.currentUser?.uid)!])").setValue(FIRAuth.auth()?.currentUser?.uid as! String)
+                    self.ref.child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(id as! String)").removeValue(completionBlock: { (error, ref) in
                         if error != nil {
                             print("error \(error)")
                         }
@@ -118,7 +122,7 @@ class SearchUserTableViewController: UITableViewController, UISearchResultsUpdat
                         //send request
                     }
                     }else{
-                        FIRDatabase.database().reference().child("FriendsList").child(snapshot.key as! String).child("FriendRequest").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").setValue(false)
+                        FIRDatabase.database().reference().child("FriendsList").child(id as! String).child("FriendRequest").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").setValue(false)
                     }
                 })
                 
@@ -129,8 +133,6 @@ class SearchUserTableViewController: UITableViewController, UISearchResultsUpdat
             self.loadDatabase()
             tableView.reloadData()
             }
-        }
-            )
         
     }
     

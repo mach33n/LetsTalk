@@ -145,6 +145,18 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
 
     }
     
+    @IBAction func logOutButton(_ sender: Any) {
+        do{
+            try FIRAuth.auth()!.signOut()
+            performSegue(withIdentifier: "logOut", sender: nil)
+        }
+        catch{
+            
+        }
+        
+    }
+    
+    
     func loadRefreshControl(){
         let refreshContents = Bundle.main.loadNibNamed("refreshView", owner: self, options: nil)
         
@@ -243,13 +255,14 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
             if snapshot.hasChildren() == true {
                 for child in snapshot.value as! [String:Any]{
                     FriendsListViewController.Friends.updateValue(child.value as! String, forKey: child.key as! String)
-                    FIRDatabase.database().reference().child("user information").child("\(child.value)").child("image").observe(.value, with: { (snapshot) in
-                        if snapshot.value == nil || snapshot.value as! String == ""{
+                    var blah = FIRDatabase.database().reference().child("user information").child("\(child.value)").value(forKeyPath: "image")
+                        if blah as! String == nil || blah as! String == ""{
                             FriendsListViewController.friendsProfilePics.updateValue("", forKey: child.key)
                         }else{
-                            FriendsListViewController.friendsProfilePics.updateValue(snapshot.value as! String, forKey: child.key)
+                            
+                            FriendsListViewController.friendsProfilePics.updateValue(blah as! String, forKey: child.key)
                         }
-                    })
+                    
                 }
             }
         })
@@ -299,17 +312,20 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
     
     func loadRequests(){
         FIRDatabase.database().reference().child("FriendsList").child(FIRAuth.auth()?.currentUser?.uid as! String).child("FriendRequest").observe(.value, with: { (snapshot) in
-            print("Snapthot: \(snapshot.value)")
+            if snapshot.hasChildren() == true{
             for person in snapshot.value as! [String:Any]{
+                if person.value as! Bool == false{
                 Let_sTalkFeedViewController.friendRequests.updateValue(person.value as! Bool, forKey: person.key)
                 
             }
+                }
             for that in Let_sTalkFeedViewController.friendRequests as! [String:Bool]{
                     if that.value == false{
                         self.Requests.append(that.key)
                         print(self.Requests)
                 }
                 }
+            }
         })
     }
 
