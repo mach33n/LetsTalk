@@ -43,11 +43,11 @@ class FriendRequestTableViewCell: UITableViewCell {
             FIRDatabase.database().reference().child("FriendsList").child(requestID as! String).child("FriendRequest").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").observe(.value, with: { (picshot) in
                 if picshot.exists() == true{
                     
-                    FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").child("\(self.requestID)").setValue(self.requestName.text as! String)
+                    FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").child("\(self.requestID as! String)").setValue(self.requestName.text as! String)
                         
-                        FIRDatabase.database().reference().child("FriendsList").child("\(self.requestID as! String)").child("Friends").child("\(FIRAuth.auth()?.currentUser?.uid)").setValue(thisDeviceName as! String)
+                        FIRDatabase.database().reference().child("FriendsList").child("\(self.requestID as! String)").child("Friends").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").setValue(thisDeviceName as! String)
                     
-                        FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(self.requestID)").removeValue(completionBlock: { (error, ref) in
+                        FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(self.requestID as! String)").removeValue(completionBlock: { (error, ref) in
                             if error != nil {
                                 print("error \(error)")
                             }

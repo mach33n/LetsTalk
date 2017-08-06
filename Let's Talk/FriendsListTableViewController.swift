@@ -52,8 +52,7 @@ class FriendsListViewController: UITableViewController {
     
         cell.nameLabel.text = self.friendsUsernames[indexPath.row]
         cell.userID = self.friendsUID[indexPath.row]
-        
-        cell.userImage.downloadImage(from: FriendsListViewController.friendsProfilePics[self.friendsUsernames[indexPath.row]])
+        cell.userImage.downloadImage(from: FriendsListViewController.friendsProfilePics[self.friendsUID[indexPath.row]])
         
         }
         return cell

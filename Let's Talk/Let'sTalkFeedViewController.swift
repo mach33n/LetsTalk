@@ -254,14 +254,18 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
         FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").observe(.value, with: { (snapshot) in
             if snapshot.hasChildren() == true {
                 for child in snapshot.value as! [String:Any]{
+                    var blah: String = ""
                     FriendsListViewController.Friends.updateValue(child.value as! String, forKey: child.key as! String)
-                    var blah = FIRDatabase.database().reference().child("user information").child("\(child.value)").value(forKeyPath: "image")
-                        if blah as! String == nil || blah as! String == ""{
-                            FriendsListViewController.friendsProfilePics.updateValue("", forKey: child.key)
-                        }else{
+                    FIRDatabase.database().reference().child("user information").child("\(child.key as! String)").child("image").observe(.value, with: { (snapshot) in
+                        print(snapshot)
+                        
+                        blah = snapshot.value as! String
+                        FriendsListViewController.friendsProfilePics.updateValue(blah as! String, forKey: child.value as! String)
+                    }, withCancel: { (error) in
+                        
+                    })
                             
-                            FriendsListViewController.friendsProfilePics.updateValue(blah as! String, forKey: child.key)
-                        }
+                        
                     
                 }
             }

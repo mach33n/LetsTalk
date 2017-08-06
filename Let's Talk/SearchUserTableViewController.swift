@@ -110,7 +110,7 @@ class SearchUserTableViewController: UITableViewController, UISearchResultsUpdat
                     if picshot.exists() == true{
                     if picshot.value as! Bool == true {
                         
-                    FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").child("\(id as! String)").setValue(cell.detailTextLabel?.text as! String)
+                    FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").child("\(id as! String)").setValue(cell.textLabel?.text as! String)
                         
                         FIRDatabase.database().reference().child("FriendsList").child("\(id as! String)").child("Friends").child("\(self.allUsers[self.find(objecToFind: FIRAuth.auth()?.currentUser?.uid)!])").setValue(FIRAuth.auth()?.currentUser?.uid as! String)
                     self.ref.child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(id as! String)").removeValue(completionBlock: { (error, ref) in
