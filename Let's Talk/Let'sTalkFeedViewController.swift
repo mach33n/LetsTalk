@@ -37,6 +37,9 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
         loadPosts()
         loadReplies()
         loadRequests()
+        loadDatabase()
+        feedView.reloadData()
+        refresh.endRefreshing()
     }
     
     
@@ -48,6 +51,9 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
         loadPosts()
         loadReplies()
         loadRequests()
+        loadDatabase()
+        feedView.reloadData()
+        refresh.endRefreshing()
         
         refresh.backgroundColor = UIColor.clear
         loadRefreshControl()
@@ -98,41 +104,42 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isExpanded && self.selectedIndex == indexPath{
-            if feedView.cellForRow(at: indexPath)?.tag == 2{
-               
-                return 150
-            }else{
+            
             
             return 262
-        }
+ 
         }
         return 150
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row <= Questions.count - 1 {
+        if indexPath.row <= Questions.count - 1 && Users.count != 0 {
         let cell = Bundle.main.loadNibNamed("TruthOrDareTableViewCell", owner: self, options: nil)?.first as! TruthOrDareTableViewCell
         
         cell.questionLabel?.text! = Questions[indexPath.row]
-        var sender = ref.child("users").value(forKey: Users[indexPath.row])
-        cell.postID = sender as! String
-        cell.sendersNameLabel?.text! = sender as! String
+            ref.child("users").observe(.value, with: { (snapshot) in
+                let sender = snapshot.childSnapshot(forPath: self.Users[indexPath.row])
+            
+        cell.postID = sender.key as! String
+        cell.sendersNameLabel?.text! = sender.value as! String
+            })
             return cell
             
-        }else if indexPath.row <= Questions.count + Replies.count - 1{
+        }else if indexPath.row <= (Questions.count + Replies.count) && Users.count != 0{
             
         let cell = Bundle.main.loadNibNamed("TruthOrDareReplyCell", owner: self, options: nil)?.first as! TruthOrDareReplyCell
-        //cell.questionLabel.text =
+        print(Replies)
         cell.replyLabel?.text! = Replies[indexPath.row - Questions.count]
         var sender = ref.child("users").value(forKey: Users[indexPath.row])
         cell.postID = sender as! String
         cell.sendersNameLabel?.text! = sender as! String
             return cell
             
-        }else{
+        }else if indexPath.row <= (Questions.count + Replies.count + Requests.count - 1) && Users.count != 0{
             let cell = Bundle.main.loadNibNamed("FriendRequestTableViewCell", owner: self, options: nil)?.first as! FriendRequestTableViewCell
-            if self.Requests.count >= 0{
+            if self.Requests.count >= 1{
+                print(Requests.count)
             cell.requestID = Requests[indexPath.row - (Questions.count + Replies.count)]
             ref.child("users").observe(.value, with: { (snapshot) in
                 let sender = snapshot.childSnapshot(forPath: self.Requests[indexPath.row - (self.Questions.count + self.Replies.count)]).value
@@ -141,8 +148,11 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
             }
             
             return cell
+        }else{
+            let cell = feedView.dequeueReusableCell(withIdentifier: "cell")
+            return cell!
         }
-
+        
     }
     
     @IBAction func logOutButton(_ sender: Any) {
@@ -224,7 +234,6 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
                                 
                             }else{
                                 for k in snapshot.value as! [String:Any] {
-                                    print("k: " + "\(k)")
                                     if k.key.contains(user) == false {
                                         if useruid != FIRAuth.auth()?.currentUser?.uid as! String{
                                             if friendIds.contains(useruid) == false{
@@ -257,7 +266,6 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
                     var blah: String = ""
                     FriendsListViewController.Friends.updateValue(child.value as! String, forKey: child.key as! String)
                     FIRDatabase.database().reference().child("user information").child("\(child.key as! String)").child("image").observe(.value, with: { (snapshot) in
-                        print(snapshot)
                         
                         blah = snapshot.value as! String
                         FriendsListViewController.friendsProfilePics.updateValue(blah as! String, forKey: child.value as! String)
@@ -275,18 +283,18 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
     
     func loadPosts(){
         //Goes under current users posts and grabs all truth or dare questions and puts them in a dictionary with the post's user ID's.
-        self.Users = []
+        //self.Users = []
         FIRDatabase.database().reference().child("Posts").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Truth Or Dare Questions").observe(.value, with: { (snapshot) in
-            //print("snapshot.key: \(snapshot.key)")
             if snapshot.exists() == true {
                 
                 var people = snapshot.value as! [String:Any]
                 for k in people {
-                //print("k: \(k)")
                 var thing = k.value as! [String:String]
                     for t in thing{
                         Let_sTalkFeedViewController.TruthOrDareQuestions.updateValue(t.value, forKey: t.key)
                         self.Users.append(k.key)
+                        self.Questions.append(t.value)
+                        //self.feedView.reloadData()
                 }
             }
             }
@@ -297,17 +305,17 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
         //Goes under current users posts and grabs all truth or dare questions and puts them in a dictionary with the post's user ID's.
         self.Users = []
         FIRDatabase.database().reference().child("Posts").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Truth Or Dare Replies").observe(.value, with: { (snapshot) in
-            //print("snapshot.key: \(snapshot.key)")
             if snapshot.exists() == true {
                 
                 var people = snapshot.value as! [String:Any]
                 for k in people {
-                    //print("k: \(k)")
                     var thing = k.value as! [String:String]
                     for t in thing{
+                        print(t.value)
                         Let_sTalkFeedViewController.TruthOrDareReplies.updateValue(t.value, forKey: t.key)
                         self.Users.append(k.key)
-                        
+                        self.Replies.append(t.value)
+                        //self.feedView.reloadData()
                     }
                 }
             }
@@ -326,7 +334,7 @@ class Let_sTalkFeedViewController: UIViewController, UIApplicationDelegate, UITa
             for that in Let_sTalkFeedViewController.friendRequests as! [String:Bool]{
                     if that.value == false{
                         self.Requests.append(that.key)
-                        print(self.Requests)
+                        //self.feedView.reloadData()
                 }
                 }
             }

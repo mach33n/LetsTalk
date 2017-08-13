@@ -38,18 +38,28 @@ class TruthOrDareTableViewCell: UITableViewCell {
     }
     
     @IBAction func Trash(_ sender: Any) {
-        var indexval = Let_sTalkFeedViewController.TruthOrDareQuestions[questionLabel.text!]
-        FIRDatabase.database().reference().child("Posts").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Truth Or Dare Questions").child("\(postID)").child(indexval!).removeValue()
+        var indexval = self.UIDs[Questions.index(of: questionLabel.text!)!]
+        print(indexval)
+        FIRDatabase.database().reference().child("Posts").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Truth Or Dare Questions").child("\(postID)").child(indexval).removeValue { (error, snapshot) in
+            
+        }
         Let_sTalkFeedViewController().refreshData()
         
     }
     
     @IBAction func Reply(_ sender: Any) {
+        if questionLabel.text! != ""{
         let num = Questions.index(of: questionLabel.text!)
         ref.child("Posts").child("\(UIDs[num!] )").child("Truth Or Dare Replies").child((FIRAuth.auth()?.currentUser?.uid)!).child(questionLabel.text!).setValue(ResponseTextView.text!)
         var indexval = Let_sTalkFeedViewController.TruthOrDareQuestions[questionLabel.text!]
-        FIRDatabase.database().reference().child("Posts").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Truth Or Dare Questions").child("\(postID)").child(indexval!).removeValue()
+        FIRDatabase.database().reference().child("Posts").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Truth Or Dare Questions").child("\(postID)").child(indexval!).removeValue { (error, snapshot) in
+            
+        }
         Let_sTalkFeedViewController().refreshData()
+        }
     }
     
+    func reload(){
+       
+}
 }

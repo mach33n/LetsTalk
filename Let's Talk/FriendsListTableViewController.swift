@@ -15,20 +15,20 @@ class FriendsListViewController: UITableViewController {
     var window: UIWindow?
     var ref = FIRDatabase.database().reference()
     static var Friends = [String:String]()
-    var friendsUsernames = Array(FriendsListViewController.Friends.keys)
-    var friendsUID = Array(FriendsListViewController.Friends.values)
+    var friendsUsernames = Array(FriendsListViewController.Friends.values)
+    var friendsUID = Array(FriendsListViewController.Friends.keys)
     static var friendsProfilePics = [String:String]()
     var friendsPics = Array(FriendsListViewController.friendsProfilePics.values)
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        loadDatabase()
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("NotAddedFriends #2: \(SearchUserTableViewController.notAddedFriends)")
         ref = FIRDatabase.database().reference()
         loadDatabase()
         tableView.reloadData()
@@ -49,10 +49,10 @@ class FriendsListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserCell
     
         if FriendsListViewController.Friends.count != 0{
-    
+            print(self.friendsUsernames)
         cell.nameLabel.text = self.friendsUsernames[indexPath.row]
         cell.userID = self.friendsUID[indexPath.row]
-        cell.userImage.downloadImage(from: FriendsListViewController.friendsProfilePics[self.friendsUID[indexPath.row]])
+        cell.userImage.downloadImage(from: FriendsListViewController.friendsProfilePics[self.friendsUsernames[indexPath.row]])
         
         }
         return cell
@@ -71,8 +71,6 @@ class FriendsListViewController: UITableViewController {
     // MARK: - Table view data source
     
     @IBAction func addFriends(_ sender: Any) {
-        loadDatabase()
-            
         if SearchUserTableViewController.notAddedFriends.count != 0{
                 self.performSegue(withIdentifier: "toFriends", sender: nil)
             }else{

@@ -58,7 +58,7 @@ class SendTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var friendsUsernames = Array(FriendsListViewController.Friends.keys)
+        var friendsUsernames = Array(FriendsListViewController.Friends.values)
         let cell = SelectableTableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         cell.textLabel?.text = friendsUsernames[indexPath.row] as! String
@@ -82,7 +82,7 @@ class SendTableViewController: UITableViewController {
         switch presentingViewController {
             case is TruthOrDareViewController:
                 if self.friendsToSendTo.count != 0 && TruthOrDareViewController.TruthorDareQuestion != ""{
-                    for ID in self.UIDsToSendTo{
+                    for ID in self.friendsToSendTo{
                         ref.child("Posts").child("\(ID)").child("Truth Or Dare Questions").child(FIRAuth.auth()?.currentUser?.uid as! String).childByAutoId().setValue("\(TruthOrDareViewController.TruthorDareQuestion!)")
                     }
             }

@@ -104,34 +104,36 @@ class SearchUserTableViewController: UITableViewController, UISearchResultsUpdat
                 
             }else{
             
-        FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(id as! String)").setValue(true)
+        
                 
                  self.handle = FIRDatabase.database().reference().child("FriendsList").child(id as! String).child("FriendRequest").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").observe(.value, with: { (picshot) in
+                    print(picshot)
                     if picshot.exists() == true{
-                    if picshot.value as! Bool == true {
                         
                     FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").child("\(id as! String)").setValue(cell.textLabel?.text as! String)
                         
                         FIRDatabase.database().reference().child("FriendsList").child("\(id as! String)").child("Friends").child("\(self.allUsers[self.find(objecToFind: FIRAuth.auth()?.currentUser?.uid)!])").setValue(FIRAuth.auth()?.currentUser?.uid as! String)
+                        
                     self.ref.child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child("\(id as! String)").removeValue(completionBlock: { (error, ref) in
                         if error != nil {
                             print("error \(error)")
                         }
+            self.loadDatabase()
+            tableView.reloadData()
                     })
                     }else{
-                        //send request
+                        
+            
                     }
-                    }else{
-                        FIRDatabase.database().reference().child("FriendsList").child(id as! String).child("FriendRequest").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").setValue(false)
-                    }
+            
+                    
                 })
                 
                 
     
                 
                 
-            self.loadDatabase()
-            tableView.reloadData()
+            
             }
         
     }
@@ -185,10 +187,10 @@ class SearchUserTableViewController: UITableViewController, UISearchResultsUpdat
             FIRDatabase.database().reference().child("users").child("\(key)").observe(.value, with: { (snapshot) in
                 var user = value as! String
                 var useruid = key as! String
-                print("user:" + user)
+                
                 FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("Friends").observe(.value, with: { (thatshot) in
                     var friendIds = Array(FriendsListViewController.Friends.values)
-                    
+                    print(friendIds)
                     FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").observe(.value, with: { (picshot) in
                         print(picshot.value)
                         var requesterUID = ["":false]
@@ -265,10 +267,10 @@ class SearchUserTableViewController: UITableViewController, UISearchResultsUpdat
         for friend in SearchUserTableViewController.notAddedIDs{
             FIRDatabase.database().reference().child("FriendsList").child("\(FIRAuth.auth()?.currentUser?.uid as! String)").child("FriendRequest").child(friend).observe(.value , with: { (snapshot) in
                 if snapshot.exists() == true{
-                    if SearchUserTableViewController.notAddedFriends.contains(SearchUserTableViewController.notAddedFriends[SearchUserTableViewController.notAddedIDs.index(of: friend) as! Int]){
+                    if SearchUserTableViewController.notAddedFriends.contains(SearchUserTableViewController.notAddedFriends[SearchUserTableViewController.notAddedIDs.index(of: friend) as! Int]) == true{
                         SearchUserTableViewController.notAddedFriends.remove(at: SearchUserTableViewController.notAddedIDs.index(of: friend) as! Int)
                     }
-                    if SearchUserTableViewController.notAddedIDs.contains(friend){
+                    if SearchUserTableViewController.notAddedIDs.contains(friend) == true{
                         SearchUserTableViewController.notAddedIDs.remove(at: SearchUserTableViewController.notAddedIDs.index(of: friend) as! Int)
                     }
                     
